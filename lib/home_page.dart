@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'month_view/month_view.dart';
 import 'month_view/month_pages.dart';
+import 'days_view/days_view.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -12,7 +13,8 @@ class HomePage extends StatelessWidget {
         title: const Text('Custom Calendar'),
       ),
       // body: const CustomCalendarWidget(),
-      body: const MonthPages(),
+      // body: const MonthPages(),
+      body: const DaysView(),
     );
   }
 }
