@@ -21,22 +21,28 @@ class DaysView extends StatelessWidget {
 
     // Add empty containers for days before the first day of the current month
     for (int i = 0; i < blankDays; i++) {
-      dayWidgets.add(Container()); // Empty container for alignment
+      dayWidgets.add(Container());
     }
 
     // Add days of the month
     for (int i = 1; i <= daysInMonth; i++) {
       dayWidgets.add(
-        SizedBox(
-          height: 120,
-          width: 220,
+        Padding(
+          padding: const EdgeInsets.all(10.0),
           child: Container(
-            height: 100,
-            width: 200,
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.black),
+            height: 150,
+            width: 400,
+            padding: const EdgeInsets.all(10.0),
+            decoration: const BoxDecoration(
+              border: Border(
+                left: BorderSide(color: Colors.black, width: 10.0),
+                top: BorderSide(color: Colors.black, width: 1.0),
+                right: BorderSide(color: Colors.black, width: 1.0),
+                bottom: BorderSide(color: Colors.black, width: 1.0),
+              ),
+              borderRadius: BorderRadius.all(Radius.circular(10.0)),
             ),
-            alignment: Alignment.center,
+            alignment: Alignment.topLeft,
             child: Text('$i'),
           ),
         ),
@@ -48,7 +54,7 @@ class DaysView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // REturn a list of days for year in years and month in month_names
+    // Return a list of days for year in years and month in month_names
     return ListView.builder(
       itemCount: years.length * month_names.length,
       itemBuilder: (BuildContext context, int index) {
@@ -61,11 +67,6 @@ class DaysView extends StatelessWidget {
               style: Theme.of(context).textTheme.titleLarge,
             ),
             for (var item in _buildCalendarDays(year, month)) item,
-            // GridView.count(
-            //   crossAxisCount: 7,
-            //   shrinkWrap: true,
-            //   children: _buildCalendarDays(year, month),
-            // ),
           ],
         );
       },
